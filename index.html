@@ -57,31 +57,28 @@
 	<img src="./IMG/abel.JPG" alt="Heart-Shaped Image">
 	<button class="heart-button" onclick="openModal()">click here</button>
 	
-	<!-- Modal -->
-	<div class="modal" id="myModal">
-		<!-- Modal content -->
-		<img src="./IMG/dedo.jpg" alt="Modal Image" class="modal-content">
-		<!-- Close button -->
-		<span class="close" onclick="closeModal()">&times;</span>
-	</div>
-	
-	<!-- Script to open and close modal -->
-	<script>
-		function openModal() {
-			document.getElementById("myModal").style.display = "block";
-			document.body.addEventListener("click", closeModalOutside);
+<!-- Modal -->
+<div class="modal" id="myModal">
+	<!-- Modal content -->
+	<img src="./IMG/dedo.jpg" alt="Modal Image" class="modal-content">
+	<!-- Close button -->
+	<span class="close" onclick="closeModal()">&times;</span>
+  </div>
+  
+  <!-- Script to open and close modal -->
+  <script>
+	function openModal() {
+	  document.getElementById("myModal").style.display = "block";
+	  document.addEventListener("click", function(event) {
+		if (event.target === document.getElementById("myModal")) {
+		  closeModal();
 		}
-		
-		function closeModal() {
-			document.getElementById("myModal").style.display = "none";
-			document.body.removeEventListener("click", closeModalOutside);
-		}
-		
-		function closeModalOutside(event) {
-			if (event.target!== document.getElementById("myModal")) {
-				closeModal();
-			}
-		}
-	</script>
+	  });
+	}
+  
+	function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  </script>
 </body>
 </html>
