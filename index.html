@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heart-Shaped Image with Modal</title>
+	<style>
+		/* Style the heart-shaped image */
+		img {
+			width: 500px; /* increased width to make the heart larger */
+			aspect-ratio: 1;
+			--_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+			-webkit-mask-box-image: var(--_m);
+			mask-border: var(--_m);
+			clip-path: polygon(-42% 0,50% 91%, 142% 0);
+			margin: 0 auto; /* center the image horizontally */
+			display: block; /* make the image a block element to center it */
+		}
+		
+		/* Style the button inside the heart */
+		.heart-button {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #E91E63;
+			color: #ffffff;
+			border: none;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		
+		/* Style the modal */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			padding-top: 100px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0,0,0,0.9);
+		}
+		
+		/* Style the modal content */
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Heart-shaped image with button inside -->
+	<img src="./IMG/abel.JPG" alt="Heart-Shaped Image">
+	<button class="heart-button" onclick="openModal()">click here</button>
+	
+	<!-- Modal -->
+	<div class="modal" id="myModal">
+		<!-- Modal content -->
+		<img src="./IMG/dedo.jpg" alt="Modal Image" class="modal-content">
+		<!-- Close button -->
+		<span class="close" onclick="closeModal()">&times;</span>
+	</div>
+	
+	<!-- Script to open and close modal -->
+	<script>
+		function openModal() {
+			document.getElementById("myModal").style.display = "block";
+			document.body.addEventListener("click", closeModalOutside);
+		}
+		
+		function closeModal() {
+			document.getElementById("myModal").style.display = "none";
+			document.body.removeEventListener("click", closeModalOutside);
+		}
+		
+		function closeModalOutside(event) {
+			if (event.target!== document.getElementById("myModal")) {
+				closeModal();
+			}
+		}
+	</script>
+</body>
+</html>
